@@ -1,0 +1,20 @@
+--- vec.py
++++ vec.py
+@@ -173,7 +173,7 @@
+ 
+     def __str__(v):
+         "pretty-printing"
+-        D_list = sorted(v.D, key=hash)
++        D_list = sorted(v.D, key=repr)
+         numdec = 3
+         wd = dict([(k,(1+max(len(str(k)), len('{0:.{1}G}'.format(v[k], numdec))))) if isinstance(v[k], int) or isinstance(v[k], float) else (k,(1+max(len(str(k)), len(str(v[k]))))) for k in D_list])
+         s1 = ''.join(['{0:>{1}}'.format(str(k),wd[k]) for k in D_list])
+@@ -183,7 +183,7 @@
+     def __hash__(self):
+         "Here we pretend Vecs are immutable so we can form sets of them"
+         h = hash(frozenset(self.D))
+-        for k,v in sorted(self.f.items(), key = lambda x:x[0]):
++        for k,v in sorted(self.f.items(), key = lambda x:repr(x[0])):
+             if v != 0:
+                 h = hash((h, hash(v)))
+         return h
