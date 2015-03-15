@@ -3,8 +3,8 @@ coursera = 1
 # Please fill out this stencil and submit using the provided submission script.
 
 from vec import Vec, getitem
-
-
+from itertools import product
+from GF2 import one
 
 ## 1: (Problem 3.8.1) Vector Comprehension and Sum
 def vec_select(veclist, k):
@@ -83,9 +83,8 @@ def GF2_span(D, S):
     >>> S == {Vec({0, 1},{1: one}), Vec({0, 1},{0: one})}
     True
     '''
-    pass
-
-
+    res = [sum([a * v for (a, v) in zip(i, S)]) for i in product({0, one}, repeat=len(S))] if len(S) != 0 else Vec(D,{})
+    return set(res)
 
 ## 4: (Problem 3.8.7) Is it a vector space 1
 # Answer with a boolean, please.
