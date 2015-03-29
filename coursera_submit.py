@@ -236,12 +236,10 @@ def submit(parts_string):
     test_vars['substitute_in_assignment'] = substitute_in_assignment
     global login
     if not login:
-        login = 'RiccardoTonini@gmail.com'
-        # login = login_prompt()
+        login = login_prompt()
     global password
     if not password:
-        password = 'yE5w9VkYYQ'
-        # password = password_prompt()
+        password = password_prompt()
     if not parts_string:
         parts_string = parts_prompt(problems)
 
